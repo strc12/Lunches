@@ -12,7 +12,19 @@ try{
     if ($stmt->rowCount() == 0) {
         echo("Invalid username ."); 
     }else{
-        echo("ok");
+        #check password ok..
+        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            print_r($row);
+            if ($_POST["password"]==$row["Password"]){
+                echo("password ok");
+
+            }else{
+                echo("incorrect password");
+            }
+            //echo($row["Name"]." ".$row["Description"]." ".$row["Price"]);
+            echo("<br>");
+        }
     }
 }
 catch(PDOException $e)
