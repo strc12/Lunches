@@ -1,6 +1,6 @@
 <?php
 session_start();//to allow session variables
-//header("location: food.php");
+header("location: index.php");
 print_r($_POST);
 array_map("htmlspecialchars", $_POST);//sanitises inputs so no html can be injected
 include_once("connection.php");//import equivalent!
@@ -24,6 +24,7 @@ try{
                 echo("password ok");
                 $_SESSION["firstname"]=$row["Forename"];//session variable - lasts until browser closed
                 $_SESSION["loggedinuser"]=$row["UserID"];
+                $_SESSION["admin"]=$row["Role"];
 
             }else{
                 echo("incorrect password");

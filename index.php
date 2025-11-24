@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    #print_r($_SESSION);
+    if (isset($_SESSION["loggedinuser"])){
+        echo("Hello ".$_SESSION["firstname"]);
+    }else{
+        echo("not logged in");
+    }
+?>
 <!DOCTYPE HTML>
 <html>
 <head>          
