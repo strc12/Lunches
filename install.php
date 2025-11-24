@@ -24,6 +24,21 @@ Role TINYINT(1)
 ");
 $stmt->execute();
 echo("tblusers created<br>");
+//add in test bed of users
+;
+$hashedpassword=password_hash("password",PASSWORD_DEFAULT);
+echo($hashedpassword);
+
+$stmt=$conn->prepare("INSERT INTO tblusers 
+(UserID,Username,Surname,Forename,Password,Year,Balance,Role)
+VALUES
+(NULL,'cunniffe.r','Cunniffe','Robert',:Password,13,10.00,1),
+(NULL,'smith.b','Smith','Bob',:Password,12,100,0)
+");
+
+$stmt->bindParam(":Password", $hashedpassword);
+
+$stmt->execute();
 
 $stmt=$conn->prepare("DROP TABLE IF EXISTS tblfood;
 CREATE TABLE tblfood
