@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();//to allow session variables
 //header("location: food.php");
 print_r($_POST);
 array_map("htmlspecialchars", $_POST);//sanitises inputs so no html can be injected
@@ -17,10 +17,13 @@ try{
         while($row=$stmt->fetch(PDO::FETCH_ASSOC))
         {
             print_r($row);
-            if ($_POST["password"]==$row["Password"]){
+            $hashed=$row["Password"];
+            $attempt=$_POST["password"];
+
+            if (password_verify($attempt,$hashed)){
                 echo("password ok");
-                $_SESSION["firstname"]=$row["Forename"];
-                $_SESSION["loggedinuser"]=$row["Username"];
+                $_SESSION["firstname"]=$row["Forename"];//session variable - lasts until browser closed
+                $_SESSION["loggedinuser"]=$row["UserID"];
 
             }else{
                 echo("incorrect password");
