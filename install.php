@@ -66,4 +66,26 @@ $stmt=$conn->prepare("INSERT INTO tblfood
     
     
 $stmt->execute();
+
+$stmt=$conn->prepare("DROP TABLE IF EXISTS tblorder;
+CREATE TABLE tblorder
+(OrderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Status  VARCHAR(20) NOT NULL,
+UserID INT(4) NOT NULL,
+Orderdate DATETIME
+);
+");
+$stmt->execute();
+echo("order table made");
+
+$stmt=$conn->prepare("DROP TABLE IF EXISTS tblbasket;
+CREATE TABLE tblbasket
+(OrderID INT(4) NOT NULL,
+Quantity  INT(2) DEFAULT 1,
+FoodID INT(4) NOT NULL,
+PRIMARY KEY (OrderID, FoodID)
+);
+");
+$stmt->execute();
+echo("basket table made");
 ?>
