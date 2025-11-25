@@ -27,13 +27,14 @@ echo("tblusers created<br>");
 //add in test bed of users
 ;
 $hashedpassword=password_hash("password",PASSWORD_DEFAULT);
-echo($hashedpassword);
+//echo($hashedpassword);
 
 $stmt=$conn->prepare("INSERT INTO tblusers 
 (UserID,Username,Surname,Forename,Password,Year,Balance,Role)
 VALUES
 (NULL,'cunniffe.r','Cunniffe','Robert',:Password,13,10.00,1),
-(NULL,'smith.b','Smith','Bob',:Password,12,100,0)
+(NULL,'smith.b','Smith','Bob',:Password,12,100,0),
+(NULL,'smith.d','Smith','Dave',:Password,12,100,0)
 ");
 
 $stmt->bindParam(":Password", $hashedpassword);
@@ -51,4 +52,18 @@ Price DECIMAL (15,2) NOT NULL
 ");
 $stmt->execute();
 echo("tblfood created<br>");
+
+$stmt=$conn->prepare("INSERT INTO tblfood 
+    (FoodID,Name,Description,Category,Price)
+    VALUES
+    (NULL,'Coke','the classic Fizzy pop','Drink',1.30),
+    (NULL,'Pepsi','the other classic Fizzy pop','Drink',1.20),
+    (NULL,'Ham Sandwich','Tasty ham sandwich with salad','Sandwich',2.50),
+    (NULL,'Cheese Sandwich','Tasty cheese sandwich with salad','Sandwich',2.00),
+    (NULL,'Boiled Egg','what better way to get some Protein','Snack',1.20),
+    (NULL,'Fruit Salad','A healthy mix of fresh fruit','Snack',1.80)
+    ");
+    
+    
+$stmt->execute();
 ?>
