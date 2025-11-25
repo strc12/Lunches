@@ -29,7 +29,7 @@
             echo('<input type="hidden" name="foodid" value='.$row["FoodID"].'>');
             echo('Quantity:<input type="number" name="qty" min="1" max="5" value="1">');
             echo('<input type="submit" value="Add Food">');
-            echo("<br>");
+            echo("<br></form>");
         }
     ?>
 
