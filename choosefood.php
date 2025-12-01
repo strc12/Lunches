@@ -15,6 +15,11 @@
 
 <body>
     <h1>Orders page</h1>
+    <?php
+        session_start();
+        print_r($_SESSION["lunchbasket"]);
+        echo("<br>");
+    ?>
     Select category 
     show foods in that category 
      <?php

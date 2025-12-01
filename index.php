@@ -20,5 +20,6 @@
     <a href="choosefood.php">choose food</a><br>
     <a href="login.php">Login</a><br>
     <a href="logout.php">Logout</a><br>
+    <a href="emptybasket.php">Empty Basket</a><br>
 </body>
 </html>
