@@ -1,6 +1,7 @@
 <?php
     session_start();
     #print_r($_SESSION);
+    #NOTE RESTRICT ACCESS IF NOT LOGGED IN LATER
     if (isset($_SESSION["loggedinuser"])){
         echo("Hello ".$_SESSION["firstname"]);
     }else{
@@ -17,8 +18,23 @@
     <h1>Orders page</h1>
     <?php
         session_start();
-        print_r($_SESSION["lunchbasket"]);
-        echo("<br>");
+        include_once("connection.php");
+        foreach ($_SESSION["lunchbasket"] as $item){
+            echo($item["foodid"]);
+            #need to fix/finish
+            $fid=$item["foodid"];
+            $stmt=$conn->prepare("SELECT * FROM tblfood WHERE FoodID=:fid");
+            $stmt->bindParam(":fid",$fid);
+            $stmt->execute();
+            while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                print_r($row);
+                echo("<br>");
+            }
+            
+        }
+        
+        
     ?>
     Select category 
     show foods in that category 
