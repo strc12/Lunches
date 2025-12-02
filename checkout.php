@@ -42,4 +42,6 @@
     $stmt->bindParam(":userid", $_SESSION["loggedinuser"]);
         
     $stmt->execute();
+    unset($_SESSION["lunchbasket"]);#empty the basket array
+    header("location: index.php");
 ?>
