@@ -21,7 +21,7 @@
         include_once("connection.php");
         foreach ($_SESSION["lunchbasket"] as $item){
             echo($item["foodid"]);
-            #need to fix/finish
+           
             $fid=$item["foodid"];
             $stmt=$conn->prepare("SELECT * FROM tblfood WHERE FoodID=:fid");
             $stmt->bindParam(":fid",$fid);
