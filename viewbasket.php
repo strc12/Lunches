@@ -20,8 +20,6 @@
         include_once("connection.php");
         $total=0;
         foreach ($_SESSION["lunchbasket"] as $item){
-            #echo($item["foodid"]);
-           
             $fid=$item["foodid"];
             $stmt=$conn->prepare("SELECT * FROM tblfood WHERE FoodID=:fid");
             $stmt->bindParam(":fid",$fid);
@@ -32,10 +30,8 @@
                 echo("<br>");
                 $total+=($row["Price"]*$item["qty"]);
             }
-            
         }
         echo("Total cost: ".$total);
-        
     ?>
     <a href="checkout.php">Proceed to checkout</a>
 <body>
