@@ -32,6 +32,7 @@
             }
         }
         echo("Total cost: ".$total);
+        $_SESSION["totalcost"]=$total;
     ?>
     <a href="checkout.php">Proceed to checkout</a>
 <body>

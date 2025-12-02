@@ -19,6 +19,7 @@
     print_r($lastorderid);
     
     foreach ($_SESSION["lunchbasket"] as $item){
+        #adds each item in lunchbasket to the tblbasket table
         echo($item["foodid"]);
         
         $fid=$item["foodid"];
@@ -35,4 +36,10 @@
         
         
     } 
+    $stmt=$conn->prepare("UPDATE tblusers SET Balance=Balance-:totalcost WHERE UserID=:userid"); 
+       
+    $stmt->bindParam(":totalcost", $_SESSION["totalcost"]);
+    $stmt->bindParam(":userid", $_SESSION["loggedinuser"]);
+        
+    $stmt->execute();
 ?>
