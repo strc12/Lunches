@@ -18,6 +18,8 @@
     <h1>Orders page</h1>
     <?php
         session_start();
+        $howmany=count($_SESSION["lunchbasket"]);
+        echo("You have ".$howmany." items in your basket<br>");
         include_once("connection.php");
         foreach ($_SESSION["lunchbasket"] as $item){
             echo($item["foodid"]);
@@ -28,7 +30,7 @@
             $stmt->execute();
             while($row=$stmt->fetch(PDO::FETCH_ASSOC))
             {
-                print_r($row);
+                print_r($row["Name"]);
                 echo("<br>");
             }
             

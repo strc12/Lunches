@@ -21,5 +21,6 @@
     <a href="login.php">Login</a><br>
     <a href="logout.php">Logout</a><br>
     <a href="emptybasket.php">Empty Basket</a><br>
+    <a href="viewbasket.php">View Basket and Checkout</a><br>
 </body>
 </html>
